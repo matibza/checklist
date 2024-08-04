@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>LOGISTICA</title>
+</head>
+<body>
+	<center><h1 class="titulo degradado">CONTROL DIARIO</h1></center>
+	<table class="tabla margen_top">
+<tr>
+	<td class="degradado" colspan="2"><center><b>AUTOELEVADOR: </b><select id="equipo" class="sel"><option>1</option><option>2</option><option>5</option><option>17</option><option>18</option><option>20</option><option>23</option></select></center></td>
+</tr>
+<tr>
+	<td class="td2">Fecha:</td>
+	<td class="td2"><center>00/00/2024</center></td>
+</tr>
+<tr>
+	<td class="td1">*Liquidos hidraulicos</td>
+	<td class="td1"><center><input id="o1" type="button" value="ES OK" class="btn" onclick="ES_OK()"><input id="n1" onclick="NO_OK()" type="button" value="NO OK" class="btn2"></center></td>
+</tr>
+<tr>
+	<td class="td2">*Frenos:</td>
+	<td class="td2"><center><input id="o2" type="button" value="ES OK" class="btn" onclick="ES_OK2()"><input id="n2" onclick="NO_OK2()" type="button" value="NO OK" class="btn2"></center></td>
+</tr>
+<tr>
+	<td class="td1">Baliza fija:</td>
+	<td class="td1"><center><input id="o3" type="button" value="ES OK" class="btn" onclick="ES_OK3()"><input id="n3" onclick="NO_OK3()" type="button" value="NO OK" class="btn2"></center></td>
+</tr>
+<tr>
+	<td class="td2">*Luces</td>
+	<td class="td2"><center><input id="o4" type="button" value="ES OK" class="btn" onclick="ES_OK4()"><input id="n4" onclick="NO_OK4()" type="button" value="NO OK" class="btn2"></center></td>
+</tr>
+<tr>
+	<td class="td1">Alarma retroceso:</td>
+	<td class="td1"><center><input id="o5" type="button" value="ES OK" class="btn" onclick="ES_OK5()"><input id="n5" onclick="NO_OK5()" type="button" value="NO OK" class="btn2"></center></td>
+</tr>
+<tr>
+	<td class="td2">Cubiertas:</td>
+	<td class="td2"><center><input id="o6" type="button" value="ES OK" class="btn" onclick="ES_OK6()"><input id="n6" onclick="NO_OK6()" type="button" value="NO OK" class="btn2"></center></td>
+</tr>
+<tr>
+	<td class="td1">Cinturon seguridad</td>
+	<td class="td1"><center><input id="o7" type="button" value="ES OK" class="btn" onclick="ES_OK7()"><input id="n7" onclick="NO_OK7()" type="button" value="NO OK" class="btn2"></center></td>
+</tr>
+<tr>
+	<td class="td2">Matafuegos:</td>
+	<td class="td2"><center><input id="o8" type="button" value="ES OK" class="btn" onclick="ES_OK8()"><input id="n8" onclick="NO_OK8()" type="button" value="NO OK" class="btn2"></center></td>
+</tr>
+	</table>
+	<br>
+	<textarea id="observaciones" class="obs" name="textarea" rows="6" cols="45">Observaciones...</textarea>
+	<center>
+<p><a onclick="enviar()" id="enlace" href=""><input type="button" value="Enviar" class="envcan"></a><a href="https://www.qanunfm.com.ar"><input type="button" value="Cancelar" name="" class="envcan"></a></p>
+	</center>
+
+	<input id="LK" type="text" value="falopoaaaaaaaaaa" class="link">
+<p><marquee>Aplicacion check-list de autoelevadores. Ultima actualizacion: 18/04/2024.</marquee></p>
+</body>
+
+<style type="text/css">
+	body {
+		background: linear-gradient(#AEC4F3, #79A0F2 10%, #79A0F2);
+		background: linear-gradient(#AEC4F3, #79A0F2 50%, #79A0F2);
+		background: linear-gradient(#AEC4F3, #79A0F2 90%, #79A0F2);
+		margin: 0px;
+	}
+
+	.degradado {
+		background: linear-gradient(#AEC4F3, #79A0F2 10%, #79A0F2);
+		background: linear-gradient(#AEC4F3, #79A0F2 50%, #79A0F2);
+		background: linear-gradient(#AEC4F3, #79A0F2 90%, #79A0F2);
+	}
+	.link {
+		visibility: hidden;
+		width: 95%;
+	}
+	.obs {
+		color: red;
+		margin-left: 2.5%;
+		background: linear-gradient(#AEC4F3, #79A0F2 10%, #79A0F2);
+		background: linear-gradient(#AEC4F3, #79A0F2 50%, #79A0F2);
+		background: linear-gradient(#AEC4F3, #79A0F2 90%, #79A0F2);
+		border-radius: 5px;
+	}
+	.obs:focus {
+		box-shadow: #004DF5 0px 0px 7px 7px;
+	}
+	.tabla {
+		border-spacing: 0px;
+		width: 100%;
+		height: 450px;
+		border: solid #79A0F2 2px;
+		border-radius: 10px;
+	}
+	.tabla:focus {
+		box-shadow: #004DF5 0px 0px 7px 7px;
+	}
+	.margen_top {
+		margin-top: 2%;
+	}
+	.titulo {
+	    
+		background-color: #79A0F2;
+		color: white;
+		border-radius: 5px;
+	}
+	.td1 {
+		font-family: arial;
+		color: #004DF5;
+		border: ;
+		background-color: #79A0F2;
+	}
+	.td2 {
+		font-family: arial;
+		color: #004DF5;
+		border: ;
+		background-color: #AEC4F3;
+	}
+	.btn {
+		background-color: green;
+		color: white;
+		width: 45%;
+		height: 3em;
+		border-radius: 5px;
+		opacity: 100%;
+		border: solid black 2px;
+	}
+	.btn:focus {
+		box-shadow: green 0px 0px 4px 4px;
+	}
+
+	.btn2 {
+		margin-left: 2%;
+		background-color: red;
+		color: white;
+		width: 45%;
+		height: 3em;
+		border-radius: 5px;
+		opacity: 40%;
+		border: solid black 2px;
+	}
+	.btn2:focus {
+		box-shadow: red 0px 0px 4px 4px;
+	}
+	.envcan {
+		margin-left: 2%;
+		width: 35%;
+		height: 45px;
+		font-size: 1.5rem;
+		color: #004DF5;
+		
+		border: solid black 2px;
+		border-radius: 5px;
+		background: linear-gradient(#AEC4F3, #79A0F2 10%, #79A0F2);
+		background: linear-gradient(#AEC4F3, #79A0F2 50%, #79A0F2);
+		background: linear-gradient(#AEC4F3, #79A0F2 90%, #79A0F2);
+	}
+	.envcan:active {
+		box-shadow: #004DF5 0px 0px 4px 4px;
+	}
+	.sel {
+		font-family: black;
+		color: black;
+		text-align: center;
+		width: 20%;
+		height: 45px;
+		font-size: 20px;
+		border-radius: 5px;
+	    border: solid #004DF5 2px;
+	    background-color: #AEC4F3;
+	}
+	.sel:focus {
+		box-shadow: #004DF5 0px 0px 4px 4px;
+	}
+
+</style>
+<script type="text/javascript">
+	let o1 = 1;
+	let o2 = 1;
+	let o3 = 1;
+	let o4 = 1;
+	let o5 = 1;
+	let o6 = 1;
+	let o7 = 1;
+	let o8 = 1;
+	let n1 = 0;
+	let n2 = 0;
+	let n3 = 0;
+	let n4 = 0;
+	let n5 = 0;
+	let n6 = 0;
+	let n7 = 0;
+	let n8 = 0;
+	let resultado1 = 'ES OK';
+	let resultado2 = 'ES OK';
+	let resultado3 = 'ES OK';
+	let resultado4 = 'ES OK';
+	let resultado5 = 'ES OK';
+	let resultado6 = 'ES OK';
+	let resultado7 = 'ES OK';
+	let resultado8 = 'ES OK';
+		function ES_OK() {
+		/////////////////////////////O1////////////////////////////////////
+					if (o1 == '0') {
+					document.getElementById('o1').style.opacity = "100%";
+					document.getElementById('n1').style.opacity = "40%";
+					n1 = 0;
+					resultado1 = 'ES OK';
+					} 
+					if (o1 == '1') 
+					{
+						document.getElementById('o1').style.opacity = "40%";
+						document.getElementById('n1').style.opacity = "100%";
+						resultado1 = 'NO OK';
+					n1 = 1;
+					}
+					if (o1 == '1') {
+						o1 = 0;
+						o1--;
+					}
+				o1++;
+		}
+		///////////////////////////////////////////////////////////////////
+		function ES_OK2() {
+		/////////////////////////////O2////////////////////////////////////
+					if (o2 == '0') {
+					document.getElementById('o2').style.opacity = "100%";
+					document.getElementById('n2').style.opacity = "40%";
+					resultado2 = 'ES OK';
+					n2 = 0;
+					} 
+					if (o2 == '1') 
+					{
+						document.getElementById('o2').style.opacity = "40%";
+						document.getElementById('n2').style.opacity = "100%";
+						resultado2 = 'NO OK';
+					n2 = 1;
+					}
+					if (o2 == '1') {
+						o2 = 0;
+						o2--;
+					}
+				o2++;
+		///////////////////////////////////////////////////////////////////
+		}
+		function ES_OK3() {
+		/////////////////////////////O2////////////////////////////////////
+					if (o3 == '0') {
+					document.getElementById('o3').style.opacity = "100%";
+					document.getElementById('n3').style.opacity = "40%";
+					resultado3 = 'ES OK';
+					n3 = 0;
+					} 
+					if (o3 == '1') 
+					{
+						document.getElementById('o3').style.opacity = "40%";
+						document.getElementById('n3').style.opacity = "100%";
+						resultado3 = 'NO OK';
+					n3 = 1;
+					}
+					if (o3 == '1') {
+						o3 = 0;
+						o3--;
+					}
+				o3++;
+		///////////////////////////////////////////////////////////////////
+		}
+		function ES_OK4() {
+		/////////////////////////////O2////////////////////////////////////
+					if (o4 == '0') {
+					document.getElementById('o4').style.opacity = "100%";
+					document.getElementById('n4').style.opacity = "40%";
+					resultado4 = 'ES OK';
+					n4 = 0;
+					} 
+					if (o4 == '1') 
+					{
+						document.getElementById('o4').style.opacity = "40%";
+						document.getElementById('n4').style.opacity = "100%";
+						resultado4 = 'NO OK';
+						n4 = 1;
+					}
+					if (o4 == '1') {
+						o4 = 0;
+						o4--;
+					}
+				o4++;
+		///////////////////////////////////////////////////////////////////
+		}
+		function ES_OK5() {
+		/////////////////////////////O2////////////////////////////////////
+					if (o5 == '0') {
+					document.getElementById('o5').style.opacity = "100%";
+					document.getElementById('n5').style.opacity = "40%";
+					resultado5 = 'ES OK';
+					n5 = 0;
+					} 
+					if (o5 == '1') 
+					{
+						document.getElementById('o5').style.opacity = "40%";
+						document.getElementById('n5').style.opacity = "100%";
+						resultado5 = 'NO OK';
+						n5 = 1;
+					}
+					if (o5 == '1') {
+						o5 = 0;
+						o5--;
+					}
+				o5++;
+		///////////////////////////////////////////////////////////////////
+		}
+		function ES_OK6() {
+		/////////////////////////////O2////////////////////////////////////
+					if (o6 == '0') {
+					document.getElementById('o6').style.opacity = "100%";
+					document.getElementById('n6').style.opacity = "40%";
+					resultado6 = 'ES OK';
+					n6 = 0;
+					} 
+					if (o6 == '1') 
+					{
+						document.getElementById('o6').style.opacity = "40%";
+						document.getElementById('n6').style.opacity = "100%";
+						resultado6 = 'NO OK';
+						n6 = 1;
+					}
+					if (o6 == '1') {
+						o6 = 0;
+						o6--;
+					}
+				o6++;
+		///////////////////////////////////////////////////////////////////
+		}
+		function ES_OK7() {
+		/////////////////////////////O2////////////////////////////////////
+					if (o7 == '0') {
+					document.getElementById('o7').style.opacity = "100%";
+					document.getElementById('n7').style.opacity = "40%";
+					resultado7 = 'ES OK';
+					n7 = 0;
+					} 
+					if (o7 == '1') 
+					{
+						document.getElementById('o7').style.opacity = "40%";
+						document.getElementById('n7').style.opacity = "100%";
+						resultado7 = 'NO OK';
+						n7 = 1;
+					}
+					if (o7 == '1') {
+						o7 = 0;
+						o7--;
+					}
+				o7++;
+		///////////////////////////////////////////////////////////////////
+		}
+		function ES_OK8() {
+		/////////////////////////////O2////////////////////////////////////
+					if (o8 == '0') {
+					document.getElementById('o8').style.opacity = "100%";
+					document.getElementById('n8').style.opacity = "40%";
+					resultado8 = 'ES OK';
+					n8 = 0;
+					} 
+					if (o8 == '1') 
+					{
+						document.getElementById('o8').style.opacity = "40%";
+						document.getElementById('n8').style.opacity = "100%";
+						resultado8 = 'NO OK';
+						n8 = 1;
+					}
+					if (o8 == '1') {
+						o8 = 0;
+						o8--;
+					}
+				o8++;
+		///////////////////////////////////////////////////////////////////
+		}
+		function NO_OK() {
+		/////////////////////////////O1////////////////////////////////////
+					if (n1 == '0') {
+					document.getElementById('o1').style.opacity = "40%";
+					document.getElementById('n1').style.opacity = "100%";
+					o1 = 0;
+					resultado1 = 'NO OK';
+					} 
+					if (n1 == '1') 
+					{
+						document.getElementById('o1').style.opacity = "100%";
+						document.getElementById('n1').style.opacity = "40%";
+						resultado1 = 'ES OK';
+					o1 = 1;
+					}
+					if (n1 == '1') {
+						n1 = 0;
+						n1--;
+					}
+				n1++;
+		}
+		///////////////////////////////////////////////////////////////////
+		function NO_OK2() {
+		/////////////////////////////O2////////////////////////////////////
+					if (n2 == '0') {
+					document.getElementById('o2').style.opacity = "40%";
+					document.getElementById('n2').style.opacity = "100%";
+					resultado2 = 'NO OK';
+					o2 = 0;
+					} 
+					if (n2 == '1') 
+					{
+						document.getElementById('o2').style.opacity = "100%";
+						document.getElementById('n2').style.opacity = "40%";
+						resultado2 = 'ES OK';
+					o2 = 1;
+					}
+					if (n2 == '1') {
+						n2 = 0;
+						n2--;
+					}
+				n2++;
+		///////////////////////////////////////////////////////////////////
+		}
+		function NO_OK3() {
+		/////////////////////////////O2////////////////////////////////////
+					if (n3 == '0') {
+					document.getElementById('o3').style.opacity = "40%";
+					document.getElementById('n3').style.opacity = "100%";
+					resultado3 = 'NO OK';
+					o3 = 0;
+					} 
+					if (n3 == '1') 
+					{
+						document.getElementById('o3').style.opacity = "100%";
+						document.getElementById('n3').style.opacity = "40%";
+						resultado3 = 'ES OK';
+						o3 = 1;
+					}
+					if (n3 == '1') {
+						n3 = 0;
+						n3--;
+					}
+				n3++;
+		///////////////////////////////////////////////////////////////////
+		}
+		function NO_OK4() {
+		/////////////////////////////O2////////////////////////////////////
+					if (n4 == '0') {
+					document.getElementById('o4').style.opacity = "40%";
+					document.getElementById('n4').style.opacity = "100%";
+					resultado4 = 'NO OK';
+					o4 = 0;
+					} 
+					if (n4 == '1') 
+					{
+						document.getElementById('o4').style.opacity = "100%";
+						document.getElementById('n4').style.opacity = "40%";
+						resultado4 = 'ES OK';
+						o4 = 1;
+					}
+					if (n4 == '1') {
+						n4 = 0;
+						n4--;
+					}
+				n4++;
+		///////////////////////////////////////////////////////////////////
+		}
+		function NO_OK5() {
+		/////////////////////////////O2////////////////////////////////////
+					if (n5 == '0') {
+					document.getElementById('o5').style.opacity = "40%";
+					document.getElementById('n5').style.opacity = "100%";
+					resultado5 = 'NO OK';
+					o5 = 0;
+					} 
+					if (n5 == '1') 
+					{
+						document.getElementById('o5').style.opacity = "100%";
+						document.getElementById('n5').style.opacity = "40%";
+						resultado5 = 'ES OK';
+						o5 = 1;
+					}
+					if (n5 == '1') {
+						n5 = 0;
+						n5--;
+					}
+				n5++;
+		///////////////////////////////////////////////////////////////////
+		}
+		function NO_OK6() {
+		/////////////////////////////O2////////////////////////////////////
+					if (n6 == '0') {
+					document.getElementById('o6').style.opacity = "40%";
+					document.getElementById('n6').style.opacity = "100%";
+					resultado6 = 'NO OK';
+					o6 = 0;
+					} 
+					if (n6 == '1') 
+					{
+						document.getElementById('o6').style.opacity = "100%";
+						document.getElementById('n6').style.opacity = "40%";
+						resultado6 = 'ES OK';
+						o6 = 1;
+					}
+					if (n6 == '1') {
+						n6 = 0;
+						n6--;
+					}
+				n6++;
+		///////////////////////////////////////////////////////////////////
+		}
+		function NO_OK7() {
+		/////////////////////////////O2////////////////////////////////////
+					if (n7 == '0') {
+					document.getElementById('o7').style.opacity = "40%";
+					document.getElementById('n7').style.opacity = "100%";
+					resultado7 = 'NO OK';
+					o7 = 0;
+					} 
+					if (n7 == '1') 
+					{
+						document.getElementById('o7').style.opacity = "100%";
+						document.getElementById('n7').style.opacity = "40%";
+						resultado7 = 'ES OK';
+						o7 = 1;
+					}
+					if (n7 == '1') {
+						n7 = 0;
+						n7--;
+					}
+				n7++;
+		///////////////////////////////////////////////////////////////////
+		}
+		function NO_OK8() {
+		/////////////////////////////O2////////////////////////////////////
+					if (n8 == '0') {
+					document.getElementById('o8').style.opacity = "40%";
+					document.getElementById('n8').style.opacity = "100%";
+					resultado8 = 'NO OK';
+					o8 = 0;
+					} 
+					if (n8 == '1') 
+					{
+						document.getElementById('o8').style.opacity = "100%";
+						document.getElementById('n8').style.opacity = "40%";
+						resultado8 = 'ES OK';
+						o8 = 1;
+					}
+					if (n8 == '1') {
+						n8 = 0;
+						n8--;
+					}
+				n8++;
+		///////////////////////////////////////////////////////////////////
+		}
+		function enviar() {
+
+			var L = document.getElementById("LK").value;
+			var equipo = document.getElementById("equipo").value;
+			var fecha = 1;
+			var observaciones = document.getElementById("observaciones").value;
+			var operario = 'Matias Barraza'
+			var legajo = '37.XXX.XXX'
+
+			document.getElementById("LK").value = "https://api.whatsapp.com/send?text=CONTROL DIARIO DE AUTOELEVADORES, SECTOR QUE ARCHIVA: HSMA%0A*EQUIPO:* " + equipo + "%0A" + "*Fecha:* " + fecha + "%0A" + "*Liquidos hidraulicos:* " + resultado1 + "%0A" + "*Frenos:* " + resultado2 + "%0A" + "*Baliza fija:* " + resultado3 + "%0A" + "*Luces:* " + resultado4 + "%0A" + "*Alarma retroceso:* " + resultado5 + "%0A" + "*Cubiertas:* " + resultado6 + "%0A" + "*Cinturon seguridad:* " + resultado7 + "%0A" + "*Matafuegos:* " + resultado8 + "%0A" + "*Operario:* " + operario + "%0A" + "*Legajo/DNI:* " + legajo + "%0A" + "*Observaciones:* " + observaciones + "%0A&phone=542346304699";
+			var L2 = document.getElementById("LK").value;
+
+
+			document.getElementById("enlace").href = L2;
+		}
+</script>
+</html>
